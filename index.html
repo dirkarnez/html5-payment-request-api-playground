@@ -63,8 +63,10 @@
       checkoutButton.addEventListener('click', function() {
         // Every click on the checkout button should use a new instance of PaymentRequest 
         // object, because PaymentRequest.show() can be called only once per instance.
-        var request = new PaymentRequest(buildSupportedPaymentMethodData(),
-          buildShoppingCartDetails());
+        var request = new PaymentRequest(
+          buildSupportedPaymentMethodData(),
+          buildShoppingCartDetails()
+        );
 
         request.show().then(function(paymentResponse) {
           // Here we would process the payment. For this demo, simulate immediate success:
@@ -95,7 +97,8 @@
     function buildSupportedPaymentMethodData() {
       // Example supported payment methods:
       return [{
-        supportedMethods: 'basic-card',
+        // supportedMethods: 'basic-card', // 'basic-card' is deprecated
+        supportedMethods: 'https://bobbucks.dev/pay',
         data: {
           supportedNetworks: ['visa', 'mastercard'],
           supportedTypes: ['debit', 'credit']
