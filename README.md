@@ -5,3 +5,6 @@ From [dom-examples/payment-request/feature-detect-support.html at main · mdn/do
 ### Notes
 - `basic-card` is deprecated
   - [Payment Request API 的運作方式  |  Articles  |  web.dev](https://web.dev/articles/how-payment-request-api-works?hl=zh-tw)
+
+### Tutorials
+- [Web-based payment apps overview  |  Articles  |  web.dev](https://web.dev/articles/web-based-payment-apps-overview)
