@@ -8,3 +8,4 @@ From [dom-examples/payment-request/feature-detect-support.html at main · mdn/do
 
 ### Tutorials
 - [Web-based payment apps overview  |  Articles  |  web.dev](https://web.dev/articles/web-based-payment-apps-overview)
+- [Payment Request API 的運作方式  |  Articles  |  web.dev](https://web.dev/articles/how-payment-request-api-works?hl=zh-tw)
