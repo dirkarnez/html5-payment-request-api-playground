@@ -68,6 +68,18 @@
           buildShoppingCartDetails()
         );
 
+        request.canMakePayment().then(result => {
+          if (result) {
+            // This browser supports the specified payment method.
+          } else {
+            // This browser does NOT support the specified payment method.
+          }
+        }).catch(e => {
+          // An exception
+        });
+                  
+          
+          
         request.show().then(function(paymentResponse) {
           // Here we would process the payment. For this demo, simulate immediate success:
           paymentResponse.complete('success')
