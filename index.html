@@ -57,9 +57,7 @@
 
     // Feature detection
     if (window.PaymentRequest) {
-
       // Payment Request is supported in this browser, so we can proceed to use it
-
       checkoutButton.addEventListener('click', function() {
         // Every click on the checkout button should use a new instance of PaymentRequest 
         // object, because PaymentRequest.show() can be called only once per instance.
@@ -68,19 +66,16 @@
           buildShoppingCartDetails()
         );
 
-        request.canMakePayment().then(result => {
-          if (result) {
-            // This browser supports the specified payment method.
+        // Some old browser does not have `request.canMakePayment`
+        request.canMakePayment().then(isSupported => {
+          if (isSupported) {
+            return request.show()
           } else {
-            // This browser does NOT support the specified payment method.
+            // This browser does NOT support the specified payment method
+            throw "This browser does NOT support the specified payment method"
           }
-        }).catch(e => {
-          // An exception
-        });
-                  
-          
-          
-        request.show().then(function(paymentResponse) {
+        }) 
+        .then(function(paymentResponse) {
           // Here we would process the payment. For this demo, simulate immediate success:
           paymentResponse.complete('success')
           .then(function() {
@@ -89,7 +84,9 @@
               successPanel.style.display = 'block';
             });
 
-        }).catch(function(error) {
+        })
+        .catch(error => {
+          alert(error);
           // Handle cancelled or failed payment. For demo purposes:
           introPanel.style.display = 'none';
           legacyPanel.style.display = 'block';
